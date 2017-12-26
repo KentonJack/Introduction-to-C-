@@ -1,0 +1,32 @@
+实验八 多态（虚函数）
+
+3．多态
+(1)已知类Number定义如下：（选作）
+class Number{
+int  value;
+public : 
+	   	Number( int i=0 ){ value=i; }
+         // 其它成员函数，根据需要填写
+};
+为此类添加如下2个重载操作符函数，并在主函数中说明如何使用这2个重载操作符。
+1）+= 完成2个Number类对象相加；
+2）++和-- 完成Number类对象的自加和自减（注意：++和—有前置和后置两种）
+
+（2）已知矩形类定义如下：（必做）
+class Rect {
+protected:
+ 	float width , length, area;
+public:
+  Rect(){width = length = area = 0.0f;}
+	Rect(float w, float l){
+      		width = w;
+          length = l;
+      		area = width * length;
+	}
+  virtual float getArea(){return area;}
+ 	float getLen(){return length;}
+  float getWidth(){return width;}
+};
+要求:1）在Rect类基础之上公有派生出长方体类Cube，新增一个私有数据成员：高度height，并设计函数成员中getArea函数，覆盖Rect中的同名虚函数，用于计算长
+方体的表面积。
+2）设计main函数，对以上的两个类进行测试，其中cube类中getArea函数要求使用基类Rect的指针通过赋值兼容规则进行调用。
