@@ -1,0 +1,100 @@
+实验六 类的高级部分（运算符重载，1，2，3，4题中任选2题）
+1.已知类Complex定义如下：
+	class  Complex{
+double real, imag;
+public : 
+         // 其它成员函数，根据需要填写, 如构造函数、拷贝构造函数
+	};
+任务：完成Complex类的+和- 运算符重载（两个Complex对象的real和imag分别相加和相减）
+
+2.已知类Point定义如下：
+	class  Point{
+float x, y;
+public : 
+         // 其它成员函数，根据需要填写, 如构造函数、拷贝构造函数
+	};
+任务： 完成Point类的①== 、②!=、③>、④<< 运算符重载， 给定两个Point对象p1和p2,
+①p1 == p2，即p1.x == p2.x 并且p1.y == p2.y;
+②p1 != p2，即 p1.x != p2.x 或者p1.y != p2.y
+③p1 > p2，即 p1.x > p2.x或者 p1.x == p2.x 并且p1.y > p2.y
+④可以用cout<<输出一个Point对象
+
+3.已知类Date定义如下：
+class  Date{
+int d, m, y; //分别表示天、月、年
+public : 
+         // 其它成员函数，根据需要填写,如构造函数、拷贝构造函数
+};
+任务：①完成Date类的++运算符重载，实现对天数的加1。注意月末加1需要修改天和月，年末加1需要修改天、月和年。②实现Date类的++前缀和后缀，在主函数中分别调
+用。
+4.已知类Student定义如下：
+	class  Student{
+        int id;
+        char name[16];
+public : 
+         // 其它成员函数，根据需要填写, 如构造函数、拷贝构造函数
+	};
+任务：完成Student类 = 运算符重载
+
+5.已知类Student定义如下：
+class  Student{
+        int id;
+        char* name;
+public : 
+         // 其它成员函数，根据需要填写，如构造函数、拷贝构造函数
+};
+在Student类的构造函数中采用new动态分配内存。实现main函数，并创建2个Student对象。
+
+6.给出程序输出结果然后用计算机运行监测自己答案的正确性并分析出错原因。
+class counter{ 
+	private:
+		unsigned value; 
+	public:
+		counter() { value = 0;} 
+		counter(unsigned int a) {value = a;} 
+		counter & operator++(); 
+		void display();
+	};
+    counter & counter::operator++() { 
+		value++ ; 
+		return    * this;
+	}
+	void counter :: display() {
+		cout<<"Total is "<<value<<endl;
+	}
+int main(){   
+	counter i(0), n(10);
+	i = ++n;
+	i.display(); 
+	n.display(); 
+	i=n++; 
+	i.display(); 
+	n.display(); 
+	return 0;
+}
+
+7.给出程序输出结果然后用计算机运行监测自己答案的正确性并分析出错原因。
+class  Num
+{
+	int  a;  
+public : 
+	Num(int i):a(i){}
+	void Inc(int& in){ in + =a;}
+	Num& operator++()
+	{
+		a++;
+		return *this;
+	}
+  int GetVal(){return a;}
+};
+void main()
+{
+Num n(2);
+int b = 5;
+n.Inc(b); 
+cout<<b<<endl;
+++n;
+n.Inc(b);
+cout<<b<<endl;
+cout<<n.GetVal()<<endl;
+}
